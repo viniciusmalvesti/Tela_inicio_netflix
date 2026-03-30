@@ -1,0 +1,243 @@
+
+:root {
+  --netflix-bg: #141414;
+  --netflix-red: #e50914;
+  --netflix-dark: #101010;
+  --netflix-white: #ffffff;
+  --netflix-gray: #737373;
+}
+
+:root.light-theme {
+  --netflix-bg: #f5f5f5;
+  --netflix-red: #e50914;
+  --netflix-dark: #ffffff;
+  --netflix-white: #1a1a1a;
+  --netflix-gray: #666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: var(--netflix-bg);
+  color: var(--netflix-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+main {
+  width: min(100%, 950px);
+  text-align: center;
+}
+
+header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  margin-bottom: 1.8rem;
+  color: var(--netflix-white);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 0.75rem;
+}
+
+.profile {
+  background-color: var(--netflix-dark);
+  border: 1px solid #282828;
+  border-radius: 0.9rem;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.profile:hover {
+  transform: translateY(-4px);
+  border-color: var(--netflix-red);
+}
+
+.profile figure {
+  margin: 0;
+  padding: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.profile img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease;
+}
+
+.profile:hover img {
+  border-color: var(--netflix-red);
+}
+
+.profile figcaption {
+  font-size: 1rem;
+  color: var(--netflix-white);
+  font-weight: 600;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 640px) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .profile img {
+    height: 120px;
+  }
+
+  .profile figcaption {
+    font-size: 0.85rem;
+  }
+
+  .profile figure {
+    padding: 0.4rem;
+    gap: 0.4rem;
+  }
+}
+
+/* Tablet - 641px até 1024px */
+@media (min-width: 641px) and (max-width: 1024px) {
+  body {
+    padding: 1.2rem;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .profile img {
+    height: 150px;
+  }
+
+  .profile figcaption {
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop pequeno - 1025px até 1400px */
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    padding: 1rem;
+  }
+
+  .profile img {
+    height: 170px;
+  }
+
+  .profile figure {
+    padding: 0.6rem;
+  }
+}
+
+/* Desktop grande - acima de 1401px */
+@media (min-width: 1401px) {
+  body {
+    padding: 2rem;
+  }
+
+  header h1 {
+    font-size: 2.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .profile img {
+    height: 200px;
+  }
+
+  .profile:hover {
+    transform: translateY(-6px);
+  }
+}
